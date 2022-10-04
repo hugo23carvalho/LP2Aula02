@@ -4,33 +4,33 @@ namespace CatFromLastWeek
 {
     public class Cat
     {
-        public static int MaxEnergy { get; set; } = 100;
+        public static int MaxEnergy { get; set; } = 100;    //classes auto implementadas (não têm variáveis de suporte)
         public static int EnergyGainAfterSleep { get; set; } = 20;
         public static int EnergyLossAfterPlay { get; set; } = 15;
         public static int EnergyLossAfterMeow { get; set; } = 5;
 
-        private int energy;
-        private Feed feedStatus;
-        private Random random;
-        private Feed[] possibleFeedStatus;
-        private Mood[] possibleMoods;
+        private int energy;  //construtor
+        private Feed feedStatus;    //construtor
+        private Random random;  //construtor
+        private Feed[] possibleFeedStatus;  //construtor
+        private Mood[] possibleMoods;   //construtor
 
-        public string Name { get; }
+        public string Name { get; }     //variàvel auto implementada
 
-        public int Energy
+        public int Energy //classe
         {
             get => energy;
-            private set
+            private set         //acedido somente dentro da classe Energy
             {
-                energy = value;
+                energy = value;                  //variável de suporte à classe Energy
                 if (energy < 0) energy = 0;
                 else if (energy > MaxEnergy) energy = MaxEnergy;
             }
         }
 
-        public Feed FeedStatus
+        public Feed FeedStatus 
         {
-            get => feedStatus;
+            get => feedStatus;      //variável de suporte à classe FeedStatus
             private set
             {
                 feedStatus = value;
@@ -41,9 +41,9 @@ namespace CatFromLastWeek
             }
         }
 
-        public Mood MoodStatus  { get; private set; }
+        public Mood MoodStatus  { get; private set; }   //Variável auto implementada
 
-        private Cat()
+        private Cat()       //Estando private há cuidado com encapsulação
         {
             random = new Random();
             possibleFeedStatus = (Feed[])Enum.GetValues(typeof(Feed));
